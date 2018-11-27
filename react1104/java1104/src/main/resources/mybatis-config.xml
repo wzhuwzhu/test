@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--这是说明引用的是mybatis框架，不用管这个 -->
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 配置管理器 -->
+<configuration>
+    <!-- 配置数据库连接信息 -->
+    <environments default="development">
+       <environment id="development">
+           <transactionManager type="JDBC" />
+           <dataSource type="POOLED">
+              <property name="driver" value="com.mysql.jdbc.Driver" />
+              <property name="url" value="jdbc:mysql://localhost:3306/lab_management?useUnicode=true&amp;characterEncoding=UTF8" />
+              <property name="username" value="root" />
+              <property name="password" value="wsct" />
+           </dataSource>
+       </environment>
+    </environments>
+    <!-- 映射文件定位 -->
+    <!--这个就是说一下，要执行的sql语句的xml文件在哪，这里可以写相对路径也可以写绝对路径，绝对路径就是url，相对路径使用resource-->
+    <mappers>
+       <mapper url = "file:///E:/workspace/181104/react1104/java1104/src/main/resources/mapper/StaffManagementMapper.xml" />
+       <!--<mapper url = "file:///E:/workspace/181104/react1104/java1104/src/main/resources/mapper/StaffManagementMapperTest.xml" />-->
+    </mappers>
+</configuration>

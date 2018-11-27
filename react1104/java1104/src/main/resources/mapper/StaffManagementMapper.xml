@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.demo.mapper.StaffManagementMapper">
+  <resultMap id="BaseResultMap" type="com.springboot.demo.entity.StaffManagement">
+    <id column="Id" jdbcType="BIGINT" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Gender" jdbcType="BIT" property="gender" />
+    <result column="Department" jdbcType="VARCHAR" property="department" />
+    <result column="Position" jdbcType="VARCHAR" property="position" />
+    <result column="Permission" jdbcType="VARCHAR" property="permission" />
+    <result column="Technical_title" jdbcType="VARCHAR" property="technicalTitle" />
+    <result column="Degree" jdbcType="VARCHAR" property="degree" />
+    <result column="Graduated_from" jdbcType="VARCHAR" property="graduatedFrom" />
+    <result column="Major" jdbcType="VARCHAR" property="major" />
+    <result column="Year_of_graduation" jdbcType="DATE" property="yearOfGraduation" />
+    <result column="Enrolled_since" jdbcType="DATE" property="enrolledSince" />
+    <result column="Phone_no" jdbcType="VARCHAR" property="phoneNo" />
+    <result column="Hometown" jdbcType="VARCHAR" property="hometown" />
+    <result column="Year_of_birth" jdbcType="DATE" property="yearOfBirth" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, Name, Gender, Department, Position, Permission, Technical_title, Degree, Graduated_from, 
+    Major, Year_of_graduation, Enrolled_since, Phone_no, Hometown, Year_of_birth, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap"> 
+    select 
+    <!--将Base_Column_List中参数写入SQL查询语句;#{}将参数转为"id_value"格式-->
+    <include refid="Base_Column_List" />  
+    from staff_management
+    where Id = #{id,jdbcType=BIGINT}  
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from staff_management
+    where Id = #{id,jdbcType=BIGINT} 
+  </delete>
+  <insert id="insert" parameterType="com.springboot.demo.entity.StaffManagement" useGeneratedKeys="true" keyProperty="id">
+    insert into staff_management (Id, Name, Gender, 
+      Department, Position, Permission, 
+      Technical_title, Degree, Graduated_from, 
+      Major, Year_of_graduation, Enrolled_since, 
+      Phone_no, Hometown, Year_of_birth, 
+      Remark)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=BIT}, 
+      #{department,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR}, 
+      #{technicalTitle,jdbcType=VARCHAR}, #{degree,jdbcType=VARCHAR}, #{graduatedFrom,jdbcType=VARCHAR}, 
+      #{major,jdbcType=VARCHAR}, #{yearOfGraduation,jdbcType=DATE}, #{enrolledSince,jdbcType=DATE}, 
+      #{phoneNo,jdbcType=VARCHAR}, #{hometown,jdbcType=VARCHAR}, #{yearOfBirth,jdbcType=DATE}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.demo.entity.StaffManagement" useGeneratedKeys="true" keyProperty="id">
+    insert into staff_management
+    <!--  以下代码生成sql语句insert命令   -->
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="gender != null">
+        Gender,
+      </if>
+      <if test="department != null">
+        Department,
+      </if>
+      <if test="position != null">
+        Position,
+      </if>
+      <if test="permission != null">
+        Permission,
+      </if>
+      <if test="technicalTitle != null">
+        Technical_title,
+      </if>
+      <if test="degree != null">
+        Degree,
+      </if>
+      <if test="graduatedFrom != null">
+        Graduated_from,
+      </if>
+      <if test="major != null">
+        Major,
+      </if>
+      <if test="yearOfGraduation != null">
+        Year_of_graduation,
+      </if>
+      <if test="enrolledSince != null">
+        Enrolled_since,
+      </if>
+      <if test="phoneNo != null">
+        Phone_no,
+      </if>
+      <if test="hometown != null">
+        Hometown,
+      </if>
+      <if test="yearOfBirth != null">
+        Year_of_birth,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=BIT},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="technicalTitle != null">
+        #{technicalTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="degree != null">
+        #{degree,jdbcType=VARCHAR},
+      </if>
+      <if test="graduatedFrom != null">
+        #{graduatedFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="yearOfGraduation != null">
+        #{yearOfGraduation,jdbcType=DATE},
+      </if>
+      <if test="enrolledSince != null">
+        #{enrolledSince,jdbcType=DATE},
+      </if>
+      <if test="phoneNo != null">
+        #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="hometown != null">
+        #{hometown,jdbcType=VARCHAR},
+      </if>
+      <if test="yearOfBirth != null">
+        #{yearOfBirth,jdbcType=DATE},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.demo.entity.StaffManagement">
+    update staff_management
+    <set>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        Gender = #{gender,jdbcType=BIT},
+      </if>
+      <if test="department != null">
+        Department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        Position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        Permission = #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="technicalTitle != null">
+        Technical_title = #{technicalTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="degree != null">
+        Degree = #{degree,jdbcType=VARCHAR},
+      </if>
+      <if test="graduatedFrom != null">
+        Graduated_from = #{graduatedFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        Major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="yearOfGraduation != null">
+        Year_of_graduation = #{yearOfGraduation,jdbcType=DATE},
+      </if>
+      <if test="enrolledSince != null">
+        Enrolled_since = #{enrolledSince,jdbcType=DATE},
+      </if>
+      <if test="phoneNo != null">
+        Phone_no = #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="hometown != null">
+        Hometown = #{hometown,jdbcType=VARCHAR},
+      </if>
+      <if test="yearOfBirth != null">
+        Year_of_birth = #{yearOfBirth,jdbcType=DATE},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.demo.entity.StaffManagement">
+    update staff_management
+    set Name = #{name,jdbcType=VARCHAR},
+      Gender = #{gender,jdbcType=BIT},
+      Department = #{department,jdbcType=VARCHAR},
+      Position = #{position,jdbcType=VARCHAR},
+      Permission = #{permission,jdbcType=VARCHAR},
+      Technical_title = #{technicalTitle,jdbcType=VARCHAR},
+      Degree = #{degree,jdbcType=VARCHAR},
+      Graduated_from = #{graduatedFrom,jdbcType=VARCHAR},
+      Major = #{major,jdbcType=VARCHAR},
+      Year_of_graduation = #{yearOfGraduation,jdbcType=DATE},
+      Enrolled_since = #{enrolledSince,jdbcType=DATE},
+      Phone_no = #{phoneNo,jdbcType=VARCHAR},
+      Hometown = #{hometown,jdbcType=VARCHAR},
+      Year_of_birth = #{yearOfBirth,jdbcType=DATE},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <!--parameterType由Mapper.java中@Param指定-->
+  <select id="selectByUniqueField" resultMap="BaseResultMap"> 
+    select 
+    <include refid="Base_Column_List" />
+    from staff_management
+    where ${key} = #{value}  
+  </select>
+  <!--parameterType由Mapper.java中@Param指定-->
+  <select id="selectLike" resultMap="BaseResultMap"> 
+    select * from staff_management 
+    	<if test="key!=null">
+    		where Id like #{value}
+    		or Name like #{value}
+    		or Gender like #{value}
+    		or Department like #{value} 
+    		or Position like #{value}
+    		or Permission like #{value}
+    		or Technical_title like #{value} 
+    		or Degree like #{value} 
+    		or Graduated_from like #{value} 
+    		or Major like #{value} 
+    		or Year_of_graduation like #{value} 
+    		or Enrolled_since like #{value} 
+    		or Phone_no like #{value} 
+    		or Hometown like #{value} 
+    		or Year_of_birth like #{value} 
+    		or Remark like #{value}
+    	</if> 
+  </select>
+  <delete id="deleteByUniqueField">
+    delete from staff_management
+    where ${key} = #{value} 
+  </delete>
+  <!--select count(1)from...为sql语句，count(1)>0判断查询结果数是否大于0并返回boolean值-->
+  <select id="exists" resultType="java.lang.Boolean">
+		select count(1)>0 from staff_management where ${key}=#{value} 
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+		select * from staff_management
+  </select>
+    <select id="selectKeysLike" parameterType="com.springboot.demo.controller.StaffManagementArgumentObject" resultMap="BaseResultMap"> 
+    select * from staff_management where 
+    		Name like '%${name}%'
+    		AND Gender like '%${gender}%' 
+    		AND Department like '%${department}%' 
+    		AND	Position like '%${position}%' 
+    		AND Permission like '%${permission}%' 
+    		AND Technical_title like '%${technicalTitle}%' 
+    		AND	Degree like '%${degree}%' 
+    		AND	Graduated_from like '%${graduatedFrom}%' 
+    		AND	Major like '%${major}%' 
+    		AND	Year_of_graduation like '%${yearOfGraduation}%' 
+    		AND	Enrolled_since like '%${enrolledSince}%' 
+    		AND	Phone_no like '%${phoneNo}%' 
+    		AND	Hometown like '%${hometown}%' 
+    		AND	Year_of_birth like '%${yearOfBirth}%' 
+    		AND	Remark like '%${remark}%'
+  </select>
+</mapper>

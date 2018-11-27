@@ -1,0 +1,6 @@
+{
+"staffManagement":[
+  {"id":"1","name":"zhuwenda","department":"chem","position":"manager"},
+  {"id":"2","name":"hongshun","department":"chem","position":"engineerer"}
+  ]
+}
